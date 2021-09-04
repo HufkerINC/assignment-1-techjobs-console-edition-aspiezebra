@@ -31,16 +31,19 @@ public class TechJobs {
         while (true) {
 
             String actionChoice = getUserSelection("View jobs by (type 'x' to quit):", actionChoices);
-
+            System.out.println("34");
             if (actionChoice == null) {
                 break;
+//                System.out.println("37");
             } else if (actionChoice.equals("list")) {
-
+                System.out.println("39");
                 String columnChoice = getUserSelection("List", columnChoices);
 
                 if (columnChoice.equals("all")) {
                     printJobs(JobData.findAll());
+                    System.out.println("44");
                 } else {
+                    System.out.println("46");
 
                     ArrayList<String> results = JobData.findAll(columnChoice);
 
@@ -53,6 +56,7 @@ public class TechJobs {
                 }
 
             } else { // choice is "search"
+                System.out.println("59");
 
                 // How does the user want to search (e.g. by skill or employer)
                 String searchField = getUserSelection("Search by:", columnChoices);
@@ -62,8 +66,10 @@ public class TechJobs {
                 String searchTerm = in.nextLine();
 
                 if (searchField.equals("all")) {
+                    System.out.println("69");
                     printJobs(JobData.findByValue(searchTerm));
                 } else {
+                    System.out.println("72");
                     printJobs(JobData.findByColumnAndValue(searchField, searchTerm));
                 }
             }
@@ -120,6 +126,28 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        System.out.println("printJobs is not implemented yet");
+//        System.out.println("printJobs is not implemented yet");
+//        for(i = 0; i < jobData.length; i++){
+//            for(j = 0; searchField.length; i++){
+//                System.out,println("*****");
+//                System.out,println();
+//
+//            }
+//        }
+        if (someJobs.isEmpty()) {
+            System.out.print("No Results");
+        } else {
+            for (HashMap<String, String> job: someJobs) {
+                System.out.println("\n*****");
+                for (Map.Entry<String, String> detail : job.entrySet()) {
+                    System.out.println(detail.getKey() + ": " + detail.getValue());
+                }
+                System.out.println("*****");
+            }
+        }
+
+//        for(let jobData)
+//        System.out.println("printJobs is not implemented yet");
+
     }
 }
