@@ -120,11 +120,11 @@ public class JobData {
                 //String.valueOf()
                 String cValue = bValue.toLowerCase();
                 String value2 = value.toLowerCase();
-                if (!joblist.contains(row)) {
+//                if (!joblist.contains(row)) {
 //                    if(bValue.toLowerCase().contains(value.toLowerCase())){
                     if(cValue.contains(value2)){
                         joblist.add(row);
-                    }
+//                    }
                 }
 
             }
