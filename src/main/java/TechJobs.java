@@ -55,7 +55,8 @@ public class TechJobs {
                     }
                 }
 
-            } else { // choice is "search"
+            } else {
+                // choice is "search"
 //                System.out.println("59");
 
                 // How does the user want to search (e.g. by skill or employer)

@@ -75,8 +75,9 @@ public class JobData {
         for (HashMap<String, String> row : allJobs) {
 
             String aValue = row.get(column);
-
-            if (aValue.contains(value)) {
+            String dValue = aValue.toLowerCase();
+            String value3 = value.toLowerCase();
+            if (dValue.contains(value3)||value3.contains(dValue)) {
                 jobs.add(row);
             }
         }
@@ -112,17 +113,23 @@ public class JobData {
                 String bValue = row.get(searchTerm);
 //                System.out.println("searchterm " + searchTerm);
 //                System.out.println("bvalue " + bValue);
-//                System.out.println("value " + value);
+                System.out.println("value " + value);
 //                String cValue = String.valueOf(bValue);
 //                System.out.println("cvalue " + cValue);
 //                String value2 = String.valueOf(value);
 //                System.out.println("value2 " + value2);
                 //String.valueOf()
+//                System.out.println("bvalue " + bValue);
+//                System.out.println("value " + value);
+                String searchTerm2 = searchTerm.toLowerCase();
                 String cValue = bValue.toLowerCase();
                 String value2 = value.toLowerCase();
+                //System.out.println("value2 " + value2 + " bvalue " + bValue +  " cvalue " + cValue + " value " + value );
+//                System.out.println("cvalue " + cValue);
                 if (!joblist.contains(row)) {
 //                    if(bValue.toLowerCase().contains(value.toLowerCase())){
-                    if(cValue.contains(value2)){
+//                    if(cValue.contains(value2)){
+                    if(value2.contains(cValue) ||cValue.contains(value2)){
                         joblist.add(row);
                     }
                 }
@@ -138,6 +145,7 @@ public class JobData {
 
         // TODO - implement this method
         return joblist;
+//        return null;
     }
     /**
      * Read in data from a CSV file and store it in a list
