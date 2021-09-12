@@ -58,14 +58,14 @@ public class JobData {
     }
 
     /**
-     * Returns results of search the jobs data by key/value, using
+     * Returns results of search the job's data by key/value, using
      * inclusion of the search term.
      *
      * For example, searching for employer "Enterprise" will include results
      * with "Enterprise Holdings, Inc".
      *
      * @param column   Column that should be searched.
-     * @param value Value of teh field to search for
+     * @param value Value of the field to search for
      * @return List of all jobs matching the criteria
      */
     public static ArrayList<HashMap<String, String>> findByColumnAndValue(String column, String value) {
@@ -93,15 +93,42 @@ public class JobData {
      * @param value The search term to look for
      * @return      List of all jobs with at least one field containing the value
      */
+//    public static ArrayList<HashMap<String, String>> findByValue(String value) {
+//
+//        // load data, if not already loaded
+//        loadData();
+//        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+//        for (HashMap<String, String> row : allJobs) {
+//            String kValue = row.allJobs.values(searchTerm);
+//        }
+//        // TODO - implement this method
+//        return null;
+//    }
     public static ArrayList<HashMap<String, String>> findByValue(String value) {
 
         // load data, if not already loaded
         loadData();
+        ArrayList<HashMap<String, String>> joblist = new ArrayList<>();
+        for (HashMap<String, String> row : allJobs) {
+            for(String searchTerm : row.values()){
+                if (!joblist.contains(row)) {
+                    if (searchTerm.toLowerCase().contains(value.toLowerCase())){
+                        joblist.add(row);
+                    }
+                }
+
+            }
+
+//            String bValue = row.toString().toLowerCase();
+        }
+
+//        for (HashMap<String, String> row : allJobs) {
+//
+//        }
 
         // TODO - implement this method
-        return null;
+        return joblist;
     }
-
     /**
      * Read in data from a CSV file and store it in a list
      */
