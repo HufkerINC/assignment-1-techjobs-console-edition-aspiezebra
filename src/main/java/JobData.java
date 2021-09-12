@@ -111,8 +111,9 @@ public class JobData {
         ArrayList<HashMap<String, String>> joblist = new ArrayList<>();
         for (HashMap<String, String> row : allJobs) {
             for(String searchTerm : row.values()){
+                String bValue = row.get(searchTerm);
                 if (!joblist.contains(row)) {
-                    if (searchTerm.toLowerCase().contains(value.toLowerCase())){
+                    if (bValue.toLowerCase().contains(value.toLowerCase())){
                         joblist.add(row);
                     }
                 }
